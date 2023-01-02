@@ -21,6 +21,40 @@
 
 # 三、数据结构的实现
 ## 1、数组
+### 什么是数组
+> 数组是多个有序数据的集合（有序：地址连续），数组中的每一个元素都属于同一数据类型。
+### C语言中实现数组
+1. 定义数组
+    ```c
+    struct Array{
+        int * pBase;    // 存储第一个元素的地址
+        int len;        // 数组的长度
+        int cnt;        // 数组当前有效元素的个数
+    } array;
+    ```
+2. 实现功能-初始化
+    ```c
+    #include "stdlib.h"
+
+    void init(struct Array * , int);
+
+    void init(struct Array * pArray, int len){
+        // pArray=Array malloc进行内存分配，返回的是一个指针指向已经分配好的内存 分配内存的大小为struct Array的大小乘数组的长度
+        pArray -> pBase = (int *)malloc(sizeof(struct Array) * len);
+        // 如果分配失败会放回NULL
+        if(NULL == pArray -> pBase){
+            printf("动态内存分配失败\n");
+            exit(-1);
+        } else{
+            pArray -> len = len;
+            pArray -> cnt = 0;
+        }
+    }
+    ```
+3. 实现功能-追加数据
+    ```c
+    
+    ```
 ## 2、链表
 ## 3、栈
 ## 4、队列
